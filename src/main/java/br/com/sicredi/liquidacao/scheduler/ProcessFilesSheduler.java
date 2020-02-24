@@ -17,7 +17,7 @@ public class ProcessFilesSheduler {
 	private LiquidacaoCentralizadaHandler liquidacaoCentralizadaHandler;
 	
 	//método inicia o processamento 1 minuto após a anicialização e depois roda a cada hora
-    @Scheduled(fixedDelay = 3600000, initialDelay = 1000)
+    @Scheduled(fixedDelay = 3600000, initialDelay = 10000)
     private void handleFiles() throws IOException {
     	
     	log.info("Iniciando a rotina de processamento do arquivo");
