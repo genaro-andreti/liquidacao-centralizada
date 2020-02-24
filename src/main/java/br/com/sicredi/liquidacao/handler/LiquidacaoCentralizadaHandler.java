@@ -31,13 +31,21 @@ public class LiquidacaoCentralizadaHandler {
 		XStream xstream = new XStream();
 		xstream.allowTypesByRegExp(new String[] { ".*" });
 		xstream.processAnnotations(Doc.class);
+		
+		log.info("Iniciando a conversão do arquivo para o objeto Doc");
+		
 		Doc doc = (Doc) xstream.fromXML(reader);
+		
+		log.info("Finalizando a conversão do arquivo para o objeto Doc");
 
+		
+		log.info("Iniciando a persistência do objeto convertido na base de dados.");
+		
 		liquidacaoCentralizadaRepository.save(doc);
 		
-		log.info("Doc salvo na base de dados: {}", doc);
-
-		log.info("Fim do processamento, documento salvo na base de dados");
+		log.info("Persistência do objeto convertido na base de dados finalizada, documento salvo: {}", doc);
+		
+		log.info("Fim do processamento, documento salvo com sucesso");
 
 	}
 }
